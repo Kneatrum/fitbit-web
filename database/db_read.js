@@ -397,7 +397,16 @@ const getSteps = () => {
             next: (row, tableMeta) => {
                 const tableObject = tableMeta.toObject(row)
                 const { _time: time, _value: value } = tableObject;
-                results.push({ time, value });
+                // Convert the time to a Date object
+                const date = new Date(time);
+
+                // Format the date (e.g., YYYY-MM-DD)
+                const formattedDate = date.toISOString().split('T')[0];
+
+                console.log('Date:', formattedDate, 'Value:', value);
+
+                results.labels.push(formattedDate);
+                results.datasets[0].data.push(value);
             },
             error: (error) => {
                 console.error('\nError', error)
