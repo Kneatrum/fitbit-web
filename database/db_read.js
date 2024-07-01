@@ -380,7 +380,18 @@ const getSteps = () => {
         |> window(every: 1d)
         |> last()`;
 
-        let results = [];
+        let results = {
+            labels: [],
+            datasets: [
+                {
+                    label: "",
+                    data: [],
+                    backgroundColor: "blue",
+                    borderColor: "blue",
+                    borderWidth: 1,
+                },
+            ],
+        };
 
         queryClient.queryRows(fluxQuery, {
             next: (row, tableMeta) => {
