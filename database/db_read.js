@@ -29,6 +29,19 @@ function formatMinutes(minutes) {
     }
 }
 
+function extractTimeHHMMSS(isoString) {
+    // Create a Date object from the ISO string
+    const date = new Date(isoString);
+
+    // Extract the hours, minutes, and seconds
+    const hours = date.getUTCHours().toString().padStart(2, '0');
+    const minutes = date.getUTCMinutes().toString().padStart(2, '0');
+    const seconds = date.getUTCSeconds().toString().padStart(2, '0');
+
+    // Return the time in hh:mm:ss format
+    return `${hours}:${minutes}:${seconds}`;
+}
+
 function toFixedNumber(num, decimals) {
     const factor = Math.pow(10, decimals);
     return Math.round(num * factor) / factor;
