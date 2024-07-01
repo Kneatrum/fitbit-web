@@ -373,11 +373,11 @@ const getSteps = () => {
 
     return new Promise((resolve, reject) => {
         let fluxQuery = `from(bucket: "${bucket}")
-        |> range(start: 0)
-        |> filter(fn: (r) => 
-            r._measurement == "${measurements.steps}" and
+        |> range(start: -5d)
+        |> filter(fn: (r) => r._measurement == "${measurements.steps}" and
             r.${tags.device} == "${devices.device_1}" and 
             r._field == "${fields.steps}")
+        |> window(every: 1d)
         |> last()`;
 
         let results = [];
