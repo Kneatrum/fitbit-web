@@ -65,7 +65,7 @@ public_users.get('/heart',async function (req, res) {
 
         await myPromise;
         const data = await getHeartBeatRate();
-        res.send(JSON.stringify({data},null,4));
+        res.send(data);
     } catch (error){
         console.error('Error: ', error);
         res.status(500).send('An error occurred while fetching data')
