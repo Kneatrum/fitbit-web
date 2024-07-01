@@ -1,0 +1,6 @@
+node_modules/
+.env
+mqtt/publisher.js
+mqtt/automated_mqtt.py
+doc/
+router_copy/
