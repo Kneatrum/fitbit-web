@@ -149,7 +149,8 @@ const getHeartBeatRate = () => {
             next: (row, tableMeta) => {
                 const tableObject = tableMeta.toObject(row)
                 const { _time: time, _value: value } = tableObject;
-                results.push({ time, value });
+                results.labels.push(extractTimeHHMMSS(time));
+                results.datasets[0].data.push(value)
             },
             error: (error) => {
                 console.error('\nError', error);
