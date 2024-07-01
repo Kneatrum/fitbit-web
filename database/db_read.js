@@ -134,7 +134,16 @@ const getHeartBeatRate = () => {
             r.${tags.device} == "${devices.device_1}"
         )`;
 
-        let results = [];
+        let results = {
+            labels: [],
+            datasets: [
+                {
+                    label: "Heart Rate",
+                    data: [],
+                    borderColor: "rgb(75,192,192)"
+                },
+            ],
+        };
 
         queryClient.queryRows(fluxQuery, {
             next: (row, tableMeta) => {
